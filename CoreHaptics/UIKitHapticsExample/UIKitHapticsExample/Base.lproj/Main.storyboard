@@ -30,23 +30,38 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NFu-7H-CT5">
-                                <rect key="frame" x="148" y="244" width="118" height="31"/>
+                                <rect key="frame" x="39.5" y="244" width="335" height="31"/>
+                                <color key="tintColor" red="0.99215686270000003" green="0.28627450980000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                             </slider>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nqI-iS-m7e">
+                                <rect key="frame" x="41.5" y="167" width="331" height="32"/>
+                                <segments>
+                                    <segment title="Transient"/>
+                                    <segment title="Continuous"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.70588235294117641" green="0.99607843137254903" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="NFu-7H-CT5" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.275362" id="FBl-v7-B4D"/>
                             <constraint firstItem="NFu-7H-CT5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="GTe-VI-2bp"/>
                             <constraint firstItem="Hon-si-t3q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gsi-pe-JRt"/>
+                            <constraint firstItem="nqI-iS-m7e" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="H3l-Ht-jGw"/>
+                            <constraint firstItem="NFu-7H-CT5" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="ZWW-eZ-UMo"/>
                             <constraint firstItem="NFu-7H-CT5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zwf-bu-HF6"/>
                             <constraint firstItem="Hon-si-t3q" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ll8-Ia-Esf"/>
+                            <constraint firstItem="nqI-iS-m7e" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="moa-Dt-g8Y"/>
+                            <constraint firstItem="nqI-iS-m7e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="123" id="pDM-x3-cku"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="options" destination="nqI-iS-m7e" id="4Od-EO-nMP"/>
+                        <outlet property="slider" destination="NFu-7H-CT5" id="R9s-8e-Ag3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="142" y="129"/>
+            <point key="canvasLocation" x="140.57971014492756" y="128.57142857142856"/>
         </scene>
     </scenes>
 </document>

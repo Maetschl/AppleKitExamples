@@ -11,23 +11,23 @@ import CoreHaptics
 class ViewController: UIViewController {
 
     let engine = try? CHHapticEngine()
+    @IBOutlet weak var slider: UISlider!
 
-    let hapticDict = [
-        CHHapticPattern.Key.pattern: [
-            [CHHapticPattern.Key.event: [CHHapticPattern.Key.eventType: CHHapticEvent.EventType.hapticTransient,
-                                         CHHapticPattern.Key.time: 0.01,
-                                         CHHapticPattern.Key.eventDuration: 0.25]],
-            [CHHapticPattern.Key.event: [CHHapticPattern.Key.eventType: CHHapticEvent.EventType.hapticTransient,
-                                         CHHapticPattern.Key.time: 0.1,
-                                         CHHapticPattern.Key.eventDuration: 0.5]],
-            [CHHapticPattern.Key.event: [CHHapticPattern.Key.eventType: CHHapticEvent.EventType.hapticTransient,
-                                         CHHapticPattern.Key.time: 0.2,
-                                         CHHapticPattern.Key.eventDuration: 0.25]],
-            [CHHapticPattern.Key.event: [CHHapticPattern.Key.eventType: CHHapticEvent.EventType.hapticTransient,
-                                         CHHapticPattern.Key.time: 0.3,
-                                         CHHapticPattern.Key.eventDuration: 0.5]]
+    @IBOutlet weak var options: UISegmentedControl!
+
+    var eventType: CHHapticEvent.EventType {
+        options.selectedSegmentIndex == 0 ? .hapticTransient: .hapticContinuous
+    }
+    
+    var hapticDict: [CHHapticPattern.Key: Any] {
+        [
+            CHHapticPattern.Key.pattern: [
+                [CHHapticPattern.Key.event: [CHHapticPattern.Key.eventType: self.eventType,
+                                             CHHapticPattern.Key.time: 0.01,
+                                             CHHapticPattern.Key.eventDuration: slider.value]]
+            ]
         ]
-    ]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
