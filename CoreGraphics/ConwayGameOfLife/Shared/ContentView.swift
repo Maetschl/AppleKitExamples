@@ -10,45 +10,56 @@ import UIKit
 
 struct ContentView: View {
     @State private var image: Image?
+    @State private var showPicker: Bool = true
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer()
+        ZStack {
             image?
                 .interpolation(.none)
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
                 .onReceive(timer, perform: { _image in
                     nextGeneration()
                 })
-            Spacer()
-            HStack {
+            VStack(spacing: 0.0) {
                 Spacer()
-                Button("Random", action: {
-                    loadImage()
-                })
-                .font(.largeTitle)
-                Spacer()
-                Button(isPlaying ? "Pause": "Play", action: {
-                    runLoop()
-                })
-                .font(.largeTitle)
-                Spacer()
+                Color.black.opacity(0.8)
+                    .frame(height: showPicker ? 200: 0)
+                HStack {
+                    Spacer()
+                    Button(action: { showPicker.toggle() }) {
+                        Image(systemName: "largecircle.fill.circle")
+                    }.font(.largeTitle)
+                    Spacer()
+                    Button(action: { loadImage() }) {
+                        Image(systemName: "arrow.up.arrow.down.circle")
+                    }.font(.largeTitle)
+                    Spacer()
+                    Button(action: { runLoop() }) {
+                        isPlaying ?
+                            Image(systemName: "pause.circle"):
+                            Image(systemName: "play.circle")
+                    }.font(.largeTitle)
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 100)
+                .background(Color.black.opacity(0.8))
+                .accentColor(.green)
             }
-            .accentColor(.green)
-            Spacer()
+            .animation(.easeInOut)
         }
         .background(Color(.black))
         .onAppear(perform: loadImage)
         .ignoresSafeArea()
     }
 
-    let widthSize: Int = 50
-    let heightSize: Int = 80
+    let widthSize: Int = 45
+    let heightSize: Int = 90
     @State var isPlaying: Bool = true
     let loopTime: TimeInterval = 10
     @State var timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
-    @State var matrix: [[Bool]] = [[Bool]](repeating: [Bool](repeating: false, count: 80), count: 50)
-    @State var matrixAuxiliar: [[Bool]] = [[Bool]](repeating: [Bool](repeating: false, count: 80), count: 50)
+    @State var matrix: [[Bool]] = [[Bool]](repeating: [Bool](repeating: false, count: 90), count: 45)
+    @State var matrixAuxiliar: [[Bool]] = [[Bool]](repeating: [Bool](repeating: false, count: 90), count: 45)
 
     func nextGeneration() {
         for x in 0 ..< widthSize {
@@ -61,11 +72,11 @@ struct ContentView: View {
     }
 
     func isLiveOnNextCycle(_ x: Int, _ y: Int) -> Bool {
-//        if x%2 == 0 {
-//            return false
-//        } else {
-//            return true
-//        }
+        //        if x%2 == 0 {
+        //            return false
+        //        } else {
+        //            return true
+        //        }
         if x == 0 || y == 0 || y == heightSize-1 || x == widthSize-1 {
             return matrix[x][y]
         }
@@ -173,12 +184,6 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-fileprivate struct RGBA: Equatable { // (build raw data like this)
-    var r: UInt8
-    var g: UInt8
-    var b: UInt8
-    var a: UInt8
-}
 extension Bool {
     var intValue: Int {
         return self ? 1 : 0

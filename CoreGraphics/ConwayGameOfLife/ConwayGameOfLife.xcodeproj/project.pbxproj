@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67750A5825A4BB6800CA38BC /* RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67750A5725A4BB6800CA38BC /* RGBA.swift */; };
+		67750A5925A4BB6800CA38BC /* RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67750A5725A4BB6800CA38BC /* RGBA.swift */; };
 		67B40C1425A38DB200AC639F /* ConwayGameOfLifeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B40C0125A38DB000AC639F /* ConwayGameOfLifeApp.swift */; };
 		67B40C1525A38DB200AC639F /* ConwayGameOfLifeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B40C0125A38DB000AC639F /* ConwayGameOfLifeApp.swift */; };
 		67B40C1625A38DB200AC639F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B40C0225A38DB000AC639F /* ContentView.swift */; };
@@ -16,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		67750A5725A4BB6800CA38BC /* RGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBA.swift; sourceTree = "<group>"; };
 		67B40C0125A38DB000AC639F /* ConwayGameOfLifeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwayGameOfLifeApp.swift; sourceTree = "<group>"; };
 		67B40C0225A38DB000AC639F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		67B40C0325A38DB200AC639F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 				67B40C0125A38DB000AC639F /* ConwayGameOfLifeApp.swift */,
 				67B40C0225A38DB000AC639F /* ContentView.swift */,
 				67B40C0325A38DB200AC639F /* Assets.xcassets */,
+				67750A5725A4BB6800CA38BC /* RGBA.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -189,6 +193,7 @@
 			files = (
 				67B40C1625A38DB200AC639F /* ContentView.swift in Sources */,
 				67B40C1425A38DB200AC639F /* ConwayGameOfLifeApp.swift in Sources */,
+				67750A5825A4BB6800CA38BC /* RGBA.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +203,7 @@
 			files = (
 				67B40C1725A38DB200AC639F /* ContentView.swift in Sources */,
 				67B40C1525A38DB200AC639F /* ConwayGameOfLifeApp.swift in Sources */,
+				67750A5925A4BB6800CA38BC /* RGBA.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
