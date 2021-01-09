@@ -17,10 +17,30 @@ struct ProfileImage: View {
     }
 }
 
+struct Item: Identifiable {
+    var id: UUID = .init()
+    var latitude: Double
+    var longitude: Double
+    var coordinate: CLLocationCoordinate2D {
+        return .init(latitude: latitude, longitude: longitude)
+    }
+}
+
 struct MapContent: View {
+    @State var coordinateRegion: MKCoordinateRegion = MKCoordinateRegion(center: .init(latitude: 63, longitude: 11), latitudinalMeters: 10000, longitudinalMeters: 10000)
+    var annotationItems: [Item] = [
+        Item(latitude: Double.random(in: -90.0 ... 90.0), longitude: Double.random(in: -180.0 ... 180.0)),
+        Item(latitude: Double.random(in: -90.0 ... 90.0), longitude: Double.random(in: -180.0 ... 180.0))
+    ]
+    // This works slow but is not a computed propery, why?
+    //[Item](repeating: Item(latitude: Double.random(in: -90.0 ... 90.0), longitude: Double.random(in: -180.0 ... 180.0)), count: 10)
     var body: some View {
-        Map(coordinateRegion: .constant(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 38.52, longitude: 111.75), latitudinalMeters: CLLocationDistance(38.52), longitudinalMeters: CLLocationDistance(111.75))))
-            .flipsForRightToLeftLayoutDirection(true)
+        Map(coordinateRegion: $coordinateRegion, annotationItems: annotationItems) { item in
+            MapAnnotation(coordinate: item.coordinate) {
+                Image(systemName: "leaf.fill").foregroundColor(.green)
+            }
+        }
+        .flipsForRightToLeftLayoutDirection(true)
     }
 }
 
@@ -32,7 +52,6 @@ struct ContentView: View {
             HStack(spacing: 0.0) {
                 ZStack {
                     Color(.systemBackground).opacity(0.8)
-
                     ScrollView {
                         VStack {
                             ProfileImage()
@@ -62,6 +81,7 @@ struct ContentView: View {
                         }
                         .padding()
                     }
+
                 }
                 .frame(maxWidth: geometry.size.width / 4)
 
