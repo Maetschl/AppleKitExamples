@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @ObservedObject var viewModel = PokemonListViewModel()
+    @ObservedObject var viewModel: PokemonListViewModel = PokemonListViewModel()
     
     var body: some View {
         VStack {

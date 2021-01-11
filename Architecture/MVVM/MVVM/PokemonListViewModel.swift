@@ -7,7 +7,14 @@
 
 import Combine
 
-class PokemonListViewModel: ObservableObject {
+protocol PokemonListViewModelProtocol {
+    var pokemons: [Pokemon] { get set }
+    var selectedFilter: PokemonType { get set }
+    func clearFilter()
+    func filterBy(_ filter: PokemonType)
+}
+
+class PokemonListViewModel: ObservableObject, PokemonListViewModelProtocol {
 
     // MARK: Private objects
     private var model: PokemonListModelProtocol
