@@ -14,6 +14,8 @@
 		670C40C825AC8E610037F7F6 /* MVVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C40C725AC8E610037F7F6 /* MVVMTests.swift */; };
 		670C40D325AC8E610037F7F6 /* MVVMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C40D225AC8E610037F7F6 /* MVVMUITests.swift */; };
 		670C40E425AC8EC50037F7F6 /* PokemonListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C40E325AC8EC50037F7F6 /* PokemonListModel.swift */; };
+		670C40EC25AC98C70037F7F6 /* PokemonListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C40EB25AC98C70037F7F6 /* PokemonListViewModel.swift */; };
+		670C40F125AC99060037F7F6 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C40F025AC99060037F7F6 /* Pokemon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		670C40D225AC8E610037F7F6 /* MVVMUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMUITests.swift; sourceTree = "<group>"; };
 		670C40D425AC8E610037F7F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		670C40E325AC8EC50037F7F6 /* PokemonListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListModel.swift; sourceTree = "<group>"; };
+		670C40EB25AC98C70037F7F6 /* PokemonListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListViewModel.swift; sourceTree = "<group>"; };
+		670C40F025AC99060037F7F6 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				670C40B525AC8E5D0037F7F6 /* MVVMApp.swift */,
 				670C40B725AC8E5D0037F7F6 /* ContentView.swift */,
 				670C40E325AC8EC50037F7F6 /* PokemonListModel.swift */,
+				670C40EB25AC98C70037F7F6 /* PokemonListViewModel.swift */,
+				670C40F025AC99060037F7F6 /* Pokemon.swift */,
 				670C40B925AC8E600037F7F6 /* Assets.xcassets */,
 				670C40BE25AC8E600037F7F6 /* Info.plist */,
 				670C40BB25AC8E600037F7F6 /* Preview Content */,
@@ -262,8 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				670C40F125AC99060037F7F6 /* Pokemon.swift in Sources */,
 				670C40E425AC8EC50037F7F6 /* PokemonListModel.swift in Sources */,
 				670C40B825AC8E5D0037F7F6 /* ContentView.swift in Sources */,
+				670C40EC25AC98C70037F7F6 /* PokemonListViewModel.swift in Sources */,
 				670C40B625AC8E5D0037F7F6 /* MVVMApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
