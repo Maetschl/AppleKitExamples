@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "67B40C0725A38DB200AC639F"
-               BuildableName = "ConwayGameOfLife.app"
-               BlueprintName = "ConwayGameOfLife (iOS)"
-               ReferencedContainer = "container:ConwayGameOfLife.xcodeproj">
+               BlueprintIdentifier = "670C40B125AC8E5D0037F7F6"
+               BuildableName = "MVVM.app"
+               BlueprintName = "MVVM"
+               ReferencedContainer = "container:MVVM.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,8 +26,36 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
+      <AdditionalOptions>
+         <AdditionalOption
+            key = "NSZombieEnabled"
+            value = "YES"
+            isEnabled = "YES">
+         </AdditionalOption>
+      </AdditionalOptions>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "670C40C225AC8E610037F7F6"
+               BuildableName = "MVVMTests.xctest"
+               BlueprintName = "MVVMTests"
+               ReferencedContainer = "container:MVVM.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "670C40CD25AC8E610037F7F6"
+               BuildableName = "MVVMUITests.xctest"
+               BlueprintName = "MVVMUITests"
+               ReferencedContainer = "container:MVVM.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -44,26 +72,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "67B40C0725A38DB200AC639F"
-            BuildableName = "ConwayGameOfLife.app"
-            BlueprintName = "ConwayGameOfLife (iOS)"
-            ReferencedContainer = "container:ConwayGameOfLife.xcodeproj">
+            BlueprintIdentifier = "670C40B125AC8E5D0037F7F6"
+            BuildableName = "MVVM.app"
+            BlueprintName = "MVVM"
+            ReferencedContainer = "container:MVVM.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "CGBITMAP_CONTEXT_LOG_ERRORS"
-            value = ""
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
-      <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -75,10 +89,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "67B40C0725A38DB200AC639F"
-            BuildableName = "ConwayGameOfLife.app"
-            BlueprintName = "ConwayGameOfLife (iOS)"
-            ReferencedContainer = "container:ConwayGameOfLife.xcodeproj">
+            BlueprintIdentifier = "670C40B125AC8E5D0037F7F6"
+            BuildableName = "MVVM.app"
+            BlueprintName = "MVVM"
+            ReferencedContainer = "container:MVVM.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

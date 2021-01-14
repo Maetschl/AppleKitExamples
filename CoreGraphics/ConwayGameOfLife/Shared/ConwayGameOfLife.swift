@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import Accelerate
 
 class ConwayGameOfLife {
 
@@ -37,9 +38,14 @@ class ConwayGameOfLifeRenderer: ObservableObject {
     }
 
     func nextGeneration() {
-        for x in 0 ..< Self.widthSize {
-            for y in 0 ..< Self.heightSize {
+
+        data = [RGBA](repeating: black, count: Self.heightSize * Self.widthSize)
+        for y in 0 ..< Self.heightSize {
+            for x in 0 ..< Self.widthSize {
                 matrixAuxiliar[x][y] = isLiveOnNextCycle(x, y)
+                if matrixAuxiliar[x][y] {
+                    data[y * Self.widthSize + x] = green
+                }
             }
         }
         matrix = matrixAuxiliar
@@ -69,45 +75,24 @@ class ConwayGameOfLifeRenderer: ObservableObject {
             matrix[x+1][y+1].intValue
 
         switch total {
-        case 2:
-            if matrix[x][y] {
-                return true
-            } else {
-                return false
-            }
-        case 3:
-            if matrix[x][y] {
-                return true
-            } else {
-                return true
-            }
+        case 2: return matrix[x][y]
+        case 3: return true
         default: return false
         }
     }
 
+    static let bitsPerComponent: Int = MemoryLayout<UInt8>.size * 8
+    static let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
+
     func render() {
-
-        data = [RGBA]()
-        for y in 0 ..< Self.heightSize {
-            for x in 0 ..< Self.widthSize {
-                if matrix[x][y] {
-                    data.append(green)
-                } else {
-                    data.append(black)
-                }
-            }
-        }
-
-        let bitsPerComponent: Int = MemoryLayout<UInt8>.size * 8
-        let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
 
         let cgContext = CGContext(
             data: &data,
             width: Self.widthSize,
             height: Self.heightSize,
-            bitsPerComponent: bitsPerComponent,
+            bitsPerComponent: Self.bitsPerComponent,
             bytesPerRow: Self.widthSize * 4,//(4 * size) / 8,
-            space: colorSpace,
+            space: Self.colorSpace,
             bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
         )
 
@@ -123,16 +108,18 @@ class ConwayGameOfLifeRenderer: ObservableObject {
         return UIImage(cgImage: cgImage)
     }
 
+    let interval: TimeInterval = 0.01
     func runLoop() {
         if isPlaying {
             self.timer.upstream.connect().cancel()
         } else {
-            self.timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
+            self.timer = Timer.publish(every: interval, on: .main, in: .default).autoconnect()
         }
         self.isPlaying.toggle()
     }
 
     func loadImage() {
+        data = [RGBA](repeating: black, count: Self.heightSize * Self.widthSize)
         for y in 0 ..< Self.heightSize {
             for x in 0 ..< Self.widthSize {
                 if Bool.random() {
@@ -147,7 +134,7 @@ class ConwayGameOfLifeRenderer: ObservableObject {
             }
         }
         render()
-        self.timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
+        self.timer = Timer.publish(every: interval, on: .main, in: .default).autoconnect()
     }
 
 }
