@@ -1,0 +1,3 @@
+import CoreGraphics
+CGWarpMouseCursorPosition(.zero)
+

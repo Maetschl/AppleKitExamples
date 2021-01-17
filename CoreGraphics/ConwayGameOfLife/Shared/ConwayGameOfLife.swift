@@ -30,7 +30,7 @@ class ConwayGameOfLifeRenderer: ObservableObject {
     var data = [RGBA]()
 
     let black = RGBA(r: 0, g: 0, b: 0, a: 255)
-    let yellow = RGBA(r: 0, g: 255, b: 0, a: 255)
+    let yellow = RGBA(r: 100, g: 100, b: 0, a: 255)
     let green = RGBA(r: 0, g: 255, b: 0, a: 255)
 
     init() {
@@ -75,18 +75,21 @@ class ConwayGameOfLifeRenderer: ObservableObject {
             matrix[x+1][y+1].intValue
 
         switch total {
-        case 2: return matrix[x][y]
-        case 3: return true
-        default: return false
+        case 2:
+            return matrix[x][y]
+        case 3:
+            return true
+        default:
+            return false
         }
     }
 
     static let bitsPerComponent: Int = MemoryLayout<UInt8>.size * 8
     static let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
+    var cgContext: CGContext!
 
     func render() {
-
-        let cgContext = CGContext(
+        self.cgContext = CGContext(
             data: &data,
             width: Self.widthSize,
             height: Self.heightSize,
@@ -94,13 +97,8 @@ class ConwayGameOfLifeRenderer: ObservableObject {
             bytesPerRow: Self.widthSize * 4,//(4 * size) / 8,
             space: Self.colorSpace,
             bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
-        )
-
-        guard let cgImage = cgContext?.makeImage() else {
-            fatalError()
-        }
-
-        self.cgImage = cgImage
+        )!
+        self.cgImage = cgContext.makeImage()
         counter += 1
     }
 
