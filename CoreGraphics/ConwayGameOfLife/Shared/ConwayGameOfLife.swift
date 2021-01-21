@@ -40,14 +40,16 @@ class ConwayGameOfLifeRenderer: ObservableObject {
     func nextGeneration() {
 
         data = [RGBA](repeating: black, count: Self.heightSize * Self.widthSize)
-        for y in 0 ..< Self.heightSize {
-            for x in 0 ..< Self.widthSize {
+        let time = Date().timeIntervalSince1970
+        for x in 0 ..< Self.widthSize {
+            for y in 0 ..< Self.heightSize {
                 matrixAuxiliar[x][y] = isLiveOnNextCycle(x, y)
                 if matrixAuxiliar[x][y] {
                     data[y * Self.widthSize + x] = green
                 }
             }
         }
+        print(Date().timeIntervalSince1970 - time)
         matrix = matrixAuxiliar
         render()
     }
