@@ -20,11 +20,11 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: CustomHeaderCollectionViewCell.identifier
         )
-        collectionView.contentInset = UIEdgeInsets(top: 0.0, left: 15.0, bottom: 0.0, right: 0.0)
+        collectionView.contentInset = UIEdgeInsets(top: 0.0, left: 9.0, bottom: 0.0, right: 9.0)
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        3
+        2
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -39,7 +39,7 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
             fatalError("Error creating CustomCollectionViewCell")
         }
         cell.backgroundColor = [UIColor.systemBlue, UIColor.red, UIColor.green, UIColor.yellow].randomElement()!
-        cell.text = "Some title"
+        cell.text = "Some title 234"
         return cell
     }
 
@@ -54,8 +54,14 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size: CGFloat = (collectionView.bounds.width / 2.0) - 14
+        return CGSize(width: size, height: size)
+    }
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: 200.0, height: 58.0)
+
+        return CGSize(width: 230.0, height: 58.0)
     }
 
 
@@ -78,8 +84,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        label.widthAnchor.constraint(equalTo: widthAnchor, constant: -32.0).isActive = true
-        label.heightAnchor.constraint(equalTo: heightAnchor, constant: -32.0).isActive = true
+        heightAnchor.constraint(equalTo: widthAnchor).isActive = true
+        widthAnchor.constraint(equalTo: heightAnchor).isActive = true
         layer.cornerRadius = 8.0
     }
 
